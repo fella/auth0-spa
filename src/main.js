@@ -2,6 +2,20 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
+import { createAuth0Client } from '@auth0/auth0-spa-js';
+
+(async () => {
+  const auth0 = await createAuth0Client({
+    domain: 'dev-n6li42pa7lfgyazm.us.auth0.com',
+    client_id: '3C5Hpt3c8Vili4i58ORomBAsawDBlvmg',
+    audience: 'https://api.harvest.org',
+    cacheLocation: 'localstorage',
+    useRefreshTokens: true
+  });
+
+  // Your logic...
+})();
+
 
 document.querySelector('#app').innerHTML = `
   <div>
