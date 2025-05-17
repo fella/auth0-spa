@@ -2,7 +2,7 @@ import './style.css'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
-import createAuth0Client, { Auth0Client } from '@auth0/auth0-spa-js';
+import { createAuth0Client } from '@auth0/auth0-spa-js';
 
 const loginBtn = document.getElementById('login') as HTMLButtonElement | null;
 const output = document.getElementById('output') as HTMLElement | null;
@@ -17,6 +17,9 @@ const show = (msg: string): void => {
   const auth0: Auth0Client = await createAuth0Client({
     domain: 'dev-n6li42pa7lfgyazm.us.auth0.com',
     client_id: '3C5Hpt3c8Vili4i58ORomBAsawDBlvmg',
+    authorizationParams: {
+      redirect_uri: window.location.origin,
+    },
     audience: 'https://api.harvest.org',
     cacheLocation: 'localstorage',
     useRefreshTokens: true
